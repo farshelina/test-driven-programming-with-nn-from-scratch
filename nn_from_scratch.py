@@ -163,7 +163,7 @@ class Dense(Layer):
 
         # TODO: Implement the forward pass for a dense layer
         # Hint: Use np.dot for matrix multiplication
-        return  np.dot(input+self.weights)+self.bias 
+        return  np.dot(input+self.weights)+self.biases
 
     def backward(self, input, grad_output):
         """
