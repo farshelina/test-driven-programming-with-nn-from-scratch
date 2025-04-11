@@ -120,13 +120,13 @@ class ReLU(Layer):
         """Apply ReLU activation function"""
         # TODO: Implement the forward pass for ReLU activation
         # Hint: Use np.maximum to apply the ReLU function element-wise
-        return  ______YOUR_CODE_HERE_________ 
+        return  np.maximum(0,input)
 
     def backward(self, input, grad_output):
         """Compute gradient of loss w.r.t. ReLU input"""
         # TODO: Implement the backward pass for ReLU activation
         # Hint: ReLU gradient is 1 where input > 0, and 0 elsewhere
-        relu_grad =  ______YOUR_CODE_HERE_________ 
+        relu_grad =  input > 0 
         return grad_output * relu_grad
 
 
@@ -163,7 +163,7 @@ class Dense(Layer):
 
         # TODO: Implement the forward pass for a dense layer
         # Hint: Use np.dot for matrix multiplication
-        return  ______YOUR_CODE_HERE_________ 
+        return  np.dot(input+self.weights)+self.bias 
 
     def backward(self, input, grad_output):
         """
@@ -232,7 +232,7 @@ def forward(network, X):
     # Pass input through each layer
     for layer in network:
         activations.append(layer.forward(input))
-        input = ______YOUR_CODE_HERE_________  # Output of current layer becomes input to next layer
+        input = activations[-1] # Output of current layer becomes input to next layer
 
     return activations
 
